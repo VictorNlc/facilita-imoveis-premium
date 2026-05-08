@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Imóvel - Facilita Imóveis</title>
+<link rel="stylesheet" href="style.css">
+<!-- Leaflet CSS for Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  .map-mini { width: 100%; height: 300px; border-radius: var(--r); margin-top: 24px; border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar--scrolled" id="navbar" style="background:var(--dark);padding:14px 0">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html">Vendas</a></li>
+      <li><a href="favoritos.html"><i class="fa-solid fa-heart" style="color:var(--gold);margin-right:4px"></i> Favoritos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://api.whatsapp.com/send/?phone=5198936637" class="btn btn-primary btn-sm" target="_blank">Atendimento</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section" style="padding-top:120px" id="details-container">
+  <div class="container">
+    <div style="text-align:center;padding:100px 0">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size:3rem;color:var(--green)"></i>
+      <p style="margin-top:16px;color:var(--gray)">Carregando imóvel...</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:none">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  function renderDetails() {
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const modo = params.get('modo') || 'venda'; // venda ou aluguel
+    
+    let im = null;
+    if (modo === 'venda') {
+      im = vendas.find(v => v.id === id);
+    } else {
+      im = locacoes.find(v => v.id === id);
+    }
+
+    const container = document.getElementById('details-container');
+    
+    if (!im) {
+      container.innerHTML = `<div class="container"><h2 class="sec-title">Imóvel não encontrado.</h2><a href="index.html" class="btn btn-primary">Voltar ao início</a></div>`;
+      return;
+    }
+
+    const priceLabel = modo === 'aluguel' ? '<small style="font-size:0.9rem;font-weight:400;color:var(--gray)">/mês</small>' : '';
+    const img1 = im.galeria && im.galeria[0] ? im.galeria[0] : im.img;
+    const img2 = im.galeria && im.galeria[1] ? im.galeria[1] : im.img;
+    const img3 = im.galeria && im.galeria[2] ? im.galeria[2] : im.img;
+
+    container.innerHTML = `
+      <div class="container">
+        <a href="javascript:history.back()" style="display:inline-flex;align-items:center;gap:6px;color:var(--gray);margin-bottom:24px;font-weight:600;font-size:0.875rem"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+        
+        <!-- HEADER -->
+        <div class="details-content">
+          <h1>${im.titulo}</h1>
+          <div class="details-loc"><i class="fa-solid fa-location-dot" style="color:var(--green)"></i> ${im.bairro}, Taquara/RS <span style="margin:0 12px;color:var(--border)">|</span> Cód: ${im.id}</div>
+        </div>
+
+        <!-- GALLERY GRID -->
+        <div class="gallery-grid">
+          <img src="${im.img}" class="gallery-img gallery-main" alt="Imagem principal">
+          <img src="${img1}" class="gallery-img" alt="Detalhe 1">
+          <img src="${img2}" class="gallery-img" alt="Detalhe 2">
+          <img src="${img3}" class="gallery-img" alt="Detalhe 3" style="grid-column: 2 / 4">
+        </div>
+
+        <div class="details-layout">
+          <!-- MAIN INFO -->
+          <div>
+            <div class="details-feats">
+              ${im.quartos > 0 ? `<div class="d-feat"><i class="fa-solid fa-bed"></i> <span>${im.quartos}</span><small>Quartos</small></div>` : ''}
+              ${im.banheiros > 0 ? `<div class="d-feat"><i class="fa-solid fa-shower"></i> <span>${im.banheiros}</span><small>Banheiros</small></div>` : ''}
+              ${im.area ? `<div class="d-feat"><i class="fa-solid fa-ruler-combined"></i> <span>${im.area}</span><small>Área</small></div>` : ''}
+              <div class="d-feat"><i class="fa-solid fa-house"></i> <span>${im.tipo}</span><small>Tipo</small></div>
+            </div>
+
+            <div class="details-desc">
+              <h3>Descrição do Imóvel</h3>
+              <p>${im.descricao || 'Excelente oportunidade! Entre em contato para mais detalhes sobre as características deste imóvel exclusivo.'}</p>
+            </div>
+
+            <div class="details-desc" style="margin-top:40px">
+              <h3>Localização</h3>
+              <p>${im.bairro}, Taquara/RS</p>
+              <div id="map-mini" class="map-mini"></div>
+            </div>
+          </div>
+
+          <!-- STICKY SIDEBAR -->
+          <div>
+            <div class="sticky-sidebar">
+              <div class="sticky-price">
+                ${fmt(im.preco)}${priceLabel}
+              </div>
+              
+              <h3 style="font-size:1.1rem;margin-bottom:16px">Agendar uma Visita</h3>
+              <form class="sticky-form" onsubmit="agendarVisita(event, ${im.id}, '${im.titulo}', '${modo}')">
+                <div class="form-group">
+                  <input type="text" id="v-nome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                  <input type="tel" id="v-tel" placeholder="Seu WhatsApp" required>
+                </div>
+                <div class="form-group">
+                  <input type="date" id="v-data" required style="color:var(--gray)">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px">Agendar Agora</button>
+              </form>
+              <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:12px" onclick="toggleFavBtn(${im.id}, this)">
+                <i class="fa-heart ${getFavs().includes(im.id) ? 'fa-solid' : 'fa-regular'}"></i> <span id="fav-text">${getFavs().includes(im.id) ? 'Salvo nos Favoritos' : 'Salvar Imóvel'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Render Map
+    if(im.lat && im.lng) {
+      const mapM = L.map('map-mini').setView([im.lat, im.lng], 15);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(mapM);
+      L.marker([im.lat, im.lng]).addTo(mapM);
+    }
+  }
+
+  function agendarVisita(e, id, titulo, modo) {
+    e.preventDefault();
+    const nome = document.getElementById('v-nome').value;
+    const tel = document.getElementById('v-tel').value;
+    const data = document.getElementById('v-data').value;
+    
+    // Convert YYYY-MM-DD to DD/MM/YYYY
+    const dArr = data.split('-');
+    const dataFmt = `${dArr[2]}/${dArr[1]}/${dArr[0]}`;
+
+    const msg = `Olá! Meu nome é ${nome}.%0AGostaria de agendar uma visita para:%0A*${titulo}* (Cód: ${id} - ${modo})%0AData de preferência: ${dataFmt}%0AMeu WhatsApp: ${tel}`;
+    window.open(`https://api.whatsapp.com/send/?phone=5198936637&text=${msg}`, '_blank');
+  }
+
+  function toggleFavBtn(id, btn) {
+    let favs = getFavs();
+    const icon = btn.querySelector('i');
+    const txt = btn.querySelector('span');
+    
+    if(favs.includes(id)) {
+      favs = favs.filter(f => f !== id);
+      icon.classList.remove('fa-solid');
+      icon.classList.add('fa-regular');
+      txt.textContent = 'Salvar Imóvel';
+    } else {
+      favs.push(id);
+      icon.classList.remove('fa-regular');
+      icon.classList.add('fa-solid');
+      txt.textContent = 'Salvo nos Favoritos';
+    }
+    saveFavs(favs);
+  }
+
+  // Init
+  document.addEventListener('DOMContentLoaded', renderDetails);
+</script>
+</body>
+</html>

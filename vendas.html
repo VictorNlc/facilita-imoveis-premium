@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imóveis à Venda - Facilita Imóveis Taquara/RS</title>
+<meta name="description" content="Imóveis para venda em Taquara/RS. Casas, apartamentos, terrenos e muito mais. Facilita Imóveis - CRECI 26038J">
+<link rel="stylesheet" href="style.css">
+<!-- Leaflet CSS for Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<nav class="navbar navbar--scrolled" id="navbar" style="background:var(--dark);padding:14px 0">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html" class="active">Vendas</a></li>
+      <li><a href="favoritos.html"><i class="fa-solid fa-heart" style="color:var(--gold);margin-right:4px"></i> Favoritos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://api.whatsapp.com/send/?phone=5198936637" class="btn btn-primary btn-sm" target="_blank">Atendimento</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="sec-label">Oportunidades</span>
+    <h1>Imóveis à Venda</h1>
+    <p>Encontre a casa, apartamento ou terreno ideal para você em Taquara e região.</p>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div class="filters-bar">
+      <div class="filter-group">
+        <label>Tipo de Imóvel</label>
+        <select id="f-tipo">
+          <option value="">Todos</option>
+          <option>Casa</option>
+          <option>Apartamento</option>
+          <option>Terreno</option>
+          <option>Sítio</option>
+          <option>Cobertura</option>
+          <option>Sobrado</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Bairro</label>
+        <select id="f-bairro">
+          <option value="">Todos</option>
+          <option>Centro</option>
+          <option>Jardim do Prado</option>
+          <option>Petrópolis</option>
+          <option>Santa Rosa</option>
+          <option>Santa Maria</option>
+          <option>Morro Alto</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Preço até</label>
+        <select id="f-preco">
+          <option value="">Qualquer</option>
+          <option value="300000">R$ 300.000</option>
+          <option value="500000">R$ 500.000</option>
+          <option value="800000">R$ 800.000</option>
+          <option value="1200000">R$ 1.200.000</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Quartos</label>
+        <select id="f-quartos">
+          <option value="">Qualquer</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+      <p style="font-size:0.875rem;color:var(--gray);font-weight:600;margin:0" id="result-count"></p>
+      
+      <div class="view-toggle" style="margin:0">
+        <button class="v-btn active" onclick="toggleView('grid')"><i class="fa-solid fa-table-cells-large"></i> Grade</button>
+        <button class="v-btn" onclick="toggleView('map')"><i class="fa-solid fa-map-location-dot"></i> Mapa</button>
+      </div>
+    </div>
+    
+    <div class="props-grid" id="vendas-grid-page"></div>
+    <div id="map-view" class="map-container"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+        </a>
+        <p class="footer-about">Uma imobiliária dedicada a encontrar o lar perfeito para você e sua família. Profissionalismo, ética e transparência em todas as negociações imobiliárias em Taquara e região.</p>
+        <div class="footer-social">
+          <a href="#" class="fsoc"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="sobre.html">Quem Somos</a></li>
+          <li><a href="vendas.html">Imóveis à Venda</a></li>
+          <li><a href="locacao.html">Para Alugar</a></li>
+          <li><a href="anuncie.html">Anuncie Conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Busca Rápida</h4>
+        <ul>
+          <li><a href="vendas.html?tipo=casa">Casas</a></li>
+          <li><a href="vendas.html?tipo=apartamento">Apartamentos</a></li>
+          <li><a href="vendas.html?tipo=terreno">Terrenos</a></li>
+          <li><a href="locacao.html?tipo=sala">Salas Comerciais</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p><i class="fa-solid fa-location-dot" style="width:16px;color:var(--gold)"></i> Av. Júlio Castilhos, 2400<br>Centro, Taquara/RS</p>
+        <p style="margin-top:12px"><i class="fa-solid fa-phone" style="width:16px;color:var(--gold)"></i> (51) 3541-2780</p>
+        <p><i class="fa-brands fa-whatsapp" style="width:16px;color:var(--gold)"></i> (51) 98936-6637</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J. Todos os direitos reservados.</p>
+      <p>Desenvolvido com excelência.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://api.whatsapp.com/send/?phone=5198936637" class="wa-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="btt" id="backToTop" onclick="scrollToTop()">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+function filtrar(){
+  const tipo=document.getElementById('f-tipo').value.toLowerCase();
+  const bairro=document.getElementById('f-bairro').value.toLowerCase();
+  const preco=parseInt(document.getElementById('f-preco').value)||Infinity;
+  const quartos=parseInt(document.getElementById('f-quartos').value)||0;
+  
+  const filtered=vendas.filter(im=>{
+    return(!tipo||im.tipo.toLowerCase().includes(tipo))&&
+           (!bairro||im.bairro.toLowerCase().includes(bairro))&&
+           (im.preco<=preco)&&
+           (im.quartos>=quartos);
+  });
+  
+  renderCards(filtered,'vendas-grid-page','venda');
+  document.getElementById('result-count').textContent=`${filtered.length} imóvel(is) encontrado(s)`;
+  
+  // Atualiza mapa se existir
+  if(mapInstance) {
+    updateMapMarkers(filtered, 'venda');
+  } else {
+    // Se não instanciado, armazena no array global pra quando abrir o mapa
+    // Mas pra facilitar, eu posso init o mapa em hidden state
+    setTimeout(()=>{
+      if(!mapInstance) initMap();
+      updateMapMarkers(filtered, 'venda');
+    }, 500);
+  }
+}
+
+// Verifica query parameters na URL
+const params = new URLSearchParams(window.location.search);
+if(params.get('tipo')) document.getElementById('f-tipo').value = params.get('tipo');
+if(params.get('bairro')) document.getElementById('f-bairro').value = params.get('bairro');
+if(params.get('preco')) document.getElementById('f-preco').value = params.get('preco');
+
+filtrar();
+</script>
+</body>
+</html>

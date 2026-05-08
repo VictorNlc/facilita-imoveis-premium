@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Favoritos - Facilita Imóveis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar--scrolled" id="navbar" style="background:var(--dark);padding:14px 0">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html">Vendas</a></li>
+      <li><a href="favoritos.html" class="active"><i class="fa-solid fa-heart" style="color:var(--gold);margin-right:4px"></i> Favoritos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://api.whatsapp.com/send/?phone=5198936637" class="btn btn-primary btn-sm" target="_blank">Atendimento</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="sec-label">Sua Seleção</span>
+    <h1>Imóveis Favoritos</h1>
+    <p>Os imóveis que você curtiu ficam salvos aqui para facilitar sua decisão.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="props-grid" id="fav-grid">
+      <!-- Cards rendered via JS -->
+    </div>
+    
+    <div id="empty-fav" class="empty-fav" style="display:none">
+      <i class="fa-regular fa-heart"></i>
+      <h3>Sua lista está vazia</h3>
+      <p style="color:var(--gray);margin-bottom:24px">Você ainda não salvou nenhum imóvel.<br>Explore nossas opções e clique no coração para salvá-las aqui!</p>
+      <div style="display:flex;gap:16px;justify-content:center">
+        <a href="vendas.html" class="btn btn-primary">Ver Vendas</a>
+        <a href="locacao.html" class="btn btn-outline">Ver Locações</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:none">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  function renderFavs() {
+    const favs = getFavs();
+    const grid = document.getElementById('fav-grid');
+    const empty = document.getElementById('empty-fav');
+    
+    if (favs.length === 0) {
+      grid.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    grid.style.display = 'grid';
+    empty.style.display = 'none';
+
+    // Mix both arrays to find properties
+    const allProps = [...vendas, ...locacoes];
+    const savedProps = allProps.filter(p => favs.includes(p.id));
+
+    // Determine mode based on price (hacky, but works since locacao prices are low)
+    const getMode = (p) => p.preco < 20000 ? 'aluguel' : 'venda';
+
+    grid.innerHTML = savedProps.map(im => {
+      const mode = getMode(im);
+      const isFav = true;
+      const favClass = 'saved';
+      const favIcon = 'fa-solid';
+      const badgeClass = mode==='venda'?'badge-venda':'badge-aluguel';
+      const badgeText = mode==='venda'?'Venda':'Aluguel';
+      const priceLabel = mode==='aluguel'?'/mês':'';
+
+      return `
+        <div class="prop-card">
+          <div class="prop-img">
+            <img src="${im.img}" alt="${im.titulo}" loading="lazy">
+            <span class="prop-badge ${badgeClass}">${badgeText}</span>
+            <button class="prop-save ${favClass}" onclick="removeFavLocal(${im.id}, this)" title="Remover dos favoritos">
+              <i class="${favIcon} fa-heart"></i>
+            </button>
+          </div>
+          <div class="prop-body">
+            <div class="prop-type">${im.tipo}</div>
+            <h3 class="prop-title">${im.titulo}</h3>
+            <div class="prop-loc"><i class="fa-solid fa-location-dot"></i> ${im.bairro}, Taquara/RS</div>
+            <div class="prop-footer" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+              <div class="prop-price">
+                ${fmt(im.preco)}
+                ${priceLabel?`<small>${priceLabel}</small>`:''}
+              </div>
+              <a href="detalhes.html?id=${im.id}&modo=${mode}" class="btn btn-outline btn-sm">Ver Detalhes</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function removeFavLocal(id, btn) {
+    toggleFav(id, btn); // Funcao global app.js
+    renderFavs(); // Re-render instantly
+  }
+
+  document.addEventListener('DOMContentLoaded', renderFavs);
+</script>
+</body>
+</html>

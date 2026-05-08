@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre a Facilita Imóveis - Taquara/RS</title>
+<meta name="description" content="Conheça a Facilita Imóveis, sua imobiliária em Taquara/RS desde 2003. CRECI 26038J.">
+<link rel="stylesheet" href="style.css">
+<style>
+.valores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.valor-card{background:#fff;border-radius:var(--r);padding:32px;text-align:center;border:1px solid var(--border);transition:all .3s}
+.valor-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.valor-card i{font-size:2.5rem;color:var(--gold);margin-bottom:20px}
+.valor-card h4{font-size:1.1rem;font-weight:700;margin-bottom:12px}
+.valor-card p{font-size:.875rem;color:var(--gray);line-height:1.6}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+.team-card{background:#fff;border-radius:var(--r-lg);padding:32px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--border)}
+.team-av{width:90px;height:90px;border-radius:50%;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--gray-light);margin:0 auto 20px;border:2px solid var(--border)}
+.team-card h4{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.team-card .role{font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
+.team-card p{font-size:.875rem;color:var(--gray)}
+.creci-banner{background:var(--green-dark);color:#fff;padding:48px;border-radius:var(--r-lg);text-align:center;margin-top:64px;position:relative;overflow:hidden}
+.creci-banner::before{content:'';position:absolute;left:-50px;top:-50px;width:200px;height:200px;background:rgba(201,168,76,.1);border-radius:50%}
+.creci-banner h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:16px;color:#fff}
+.creci-banner p{font-size:1.05rem;opacity:.85;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+@media(max-width:768px){.valores-grid,.team-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar--scrolled" id="navbar" style="background:var(--dark);padding:14px 0">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html">Vendas</a></li>
+      <li><a href="anuncie.html">Anuncie</a></li>
+      <li><a href="sobre.html" class="active">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://api.whatsapp.com/send/?phone=5198936637" class="btn btn-primary btn-sm" target="_blank">Atendimento</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="sec-label">Nossa História</span>
+    <h1>Sobre a Facilita Imóveis</h1>
+    <p>Tradição, ética e profissionalismo no mercado imobiliário desde 2003.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="about-grid" style="margin-bottom:80px">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000" alt="Equipe Facilita">
+      </div>
+      <div class="about-content">
+        <span class="sec-label">Quem somos</span>
+        <h2 class="sec-title">Uma imobiliária com <span class="text-gold">DNA de confiança</span></h2>
+        <div class="divider"></div>
+        <p>Atuando no ramo imobiliário desde 2003, a Facilita Imóveis oferece aos seus clientes serviços de excelência em Administração de Condomínios, Venda e Aluguel de Imóveis.</p>
+        <p>Contamos com uma equipe de colaboradores altamente qualificada, o que nos permite oferecer um atendimento personalizado e eficiente. Nossa prioridade é entender a necessidade de cada cliente para entregar o resultado esperado.</p>
+        <p>A Facilita Imóveis é administrada por <strong>Cristina Lahude Salim</strong>, profissional com vasta e sólida experiência no mercado imobiliário gaúcho. Além de compra, venda e locação, também possuímos o serviço de Financiamento Habitacional, trabalhando com as melhores taxas da região.</p>
+      </div>
+    </div>
+
+    <div class="sec-header sec-header--center">
+      <span class="sec-label">Nossos Princípios</span>
+      <h2 class="sec-title">Valores que nos guiam</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    
+    <div class="valores-grid">
+      <div class="valor-card">
+        <i class="fa-solid fa-handshake"></i>
+        <h4>Confiança</h4>
+        <p>Transparência total em cada negociação, sempre colocando o cliente em primeiro lugar e garantindo segurança jurídica.</p>
+      </div>
+      <div class="valor-card">
+        <i class="fa-solid fa-award"></i>
+        <h4>Excelência</h4>
+        <p>Atendimento de alta qualidade prestado por profissionais experientes e dedicados ao sucesso de cada cliente.</p>
+      </div>
+      <div class="valor-card">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h4>Inovação</h4>
+        <p>Adoção das melhores ferramentas tecnológicas e estratégias de mercado para otimizar os processos imobiliários.</p>
+      </div>
+      <div class="valor-card">
+        <i class="fa-solid fa-heart"></i>
+        <h4>Compromisso</h4>
+        <p>Empenho verdadeiro na realização dos sonhos de cada família e investidor que nos procura.</p>
+      </div>
+      <div class="valor-card">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <h4>Ética</h4>
+        <p>Atuação rigorosamente pautada pelos preceitos éticos e regulamentações do setor imobiliário brasileiro.</p>
+      </div>
+      <div class="valor-card">
+        <i class="fa-solid fa-city"></i>
+        <h4>Comunidade</h4>
+        <p>Orgulho em contribuir ativamente para o desenvolvimento urbano e econômico de Taquara e municípios vizinhos.</p>
+      </div>
+    </div>
+
+    <div class="creci-banner">
+      <h3>Credibilidade Comprovada</h3>
+      <p>A Facilita Imóveis é uma empresa devidamente registrada e regulamentada pelo Conselho Regional de Corretores de Imóveis do Rio Grande do Sul (CRECI-RS), sob o número 26038J.</p>
+      <a href="contato.html" class="btn btn-gold btn-lg">Fale com um corretor credenciado</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+        </a>
+        <p class="footer-about">Uma imobiliária dedicada a encontrar o lar perfeito para você e sua família. Profissionalismo, ética e transparência em todas as negociações imobiliárias em Taquara e região.</p>
+        <div class="footer-social">
+          <a href="#" class="fsoc"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="sobre.html">Quem Somos</a></li>
+          <li><a href="vendas.html">Imóveis à Venda</a></li>
+          <li><a href="locacao.html">Para Alugar</a></li>
+          <li><a href="anuncie.html">Anuncie Conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Busca Rápida</h4>
+        <ul>
+          <li><a href="vendas.html?tipo=casa">Casas</a></li>
+          <li><a href="vendas.html?tipo=apartamento">Apartamentos</a></li>
+          <li><a href="vendas.html?tipo=terreno">Terrenos</a></li>
+          <li><a href="locacao.html?tipo=sala">Salas Comerciais</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p><i class="fa-solid fa-location-dot" style="width:16px;color:var(--gold)"></i> Av. Júlio Castilhos, 2400<br>Centro, Taquara/RS</p>
+        <p style="margin-top:12px"><i class="fa-solid fa-phone" style="width:16px;color:var(--gold)"></i> (51) 3541-2780</p>
+        <p><i class="fa-brands fa-whatsapp" style="width:16px;color:var(--gold)"></i> (51) 98936-6637</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J. Todos os direitos reservados.</p>
+      <p>Desenvolvido com excelência.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://api.whatsapp.com/send/?phone=5198936637" class="wa-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="btt" id="backToTop" onclick="scrollToTop()">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="app.js"></script>
+</body>
+</html>

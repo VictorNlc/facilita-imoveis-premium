@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilita Imóveis - Sua Imobiliária em Taquara/RS</title>
+<meta name="description" content="Facilita Imóveis - Compra, venda e locação de imóveis em Taquara/RS. CRECI 26038J. Mais de 20 anos de experiência.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar--top" id="navbar">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html">Vendas</a></li>
+      <li><a href="anuncie.html">Anuncie</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="nav-phone">
+        Fale conosco
+        <span><i class="fa-brands fa-whatsapp"></i> (51) 98936-6637</span>
+      </div>
+      <a href="https://api.whatsapp.com/send/?phone=5198936637&text=Olá, gostaria de mais informações!" class="btn btn-primary btn-sm" target="_blank">
+        Atendimento
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fa-solid fa-star"></i> Excelência Imobiliária</div>
+      <h1>Encontre o imóvel <em>dos seus sonhos</em> conosco</h1>
+      <p class="hero-desc">Com mais de 20 anos de tradição em Taquara e região, conectamos você às melhores oportunidades de compra, venda e locação do mercado.</p>
+      
+      <div class="hero-actions">
+        <a href="vendas.html" class="btn btn-primary btn-lg">Ver Imóveis à Venda</a>
+        <a href="anuncie.html" class="btn btn-outline-white btn-lg">Anunciar Imóvel</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong class="stat-num" data-target="20">0</strong>
+          <span>Anos de Experiência</span>
+        </div>
+        <div class="hero-stat">
+          <strong class="stat-num" data-target="1200">0</strong>
+          <span>Imóveis Negociados</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH BOX -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-box">
+      <div class="search-tabs">
+        <button class="s-tab active" onclick="setTab(this,'comprar')">Comprar</button>
+        <button class="s-tab" onclick="setTab(this,'alugar')">Alugar</button>
+      </div>
+      <div class="search-fields">
+        <div class="sf-group">
+          <label>Tipo de Imóvel</label>
+          <select id="tipo-imovel">
+            <option value="">Todos os tipos</option>
+            <option>Casa</option>
+            <option>Apartamento</option>
+            <option>Sala Comercial</option>
+            <option>Terreno</option>
+            <option>Sítio</option>
+            <option>Cobertura</option>
+            <option>Sobrado</option>
+          </select>
+        </div>
+        <div class="sf-group">
+          <label>Bairro / Região</label>
+          <select id="bairro">
+            <option value="">Qualquer bairro</option>
+            <option>Centro</option>
+            <option>Jardim do Prado</option>
+            <option>Petrópolis</option>
+            <option>Santa Rosa</option>
+            <option>Santa Maria</option>
+            <option>Mundo Novo</option>
+            <option>Morro Alto</option>
+          </select>
+        </div>
+        <div class="sf-group">
+          <label>Faixa de Preço</label>
+          <select id="preco">
+            <option value="">Qualquer valor</option>
+            <option value="200000">Até R$ 200.000</option>
+            <option value="400000">Até R$ 400.000</option>
+            <option value="600000">Até R$ 600.000</option>
+            <option value="1000000">Até R$ 1.000.000</option>
+            <option value="9999999">Acima de R$ 1.000.000</option>
+          </select>
+        </div>
+        <button class="btn btn-gold btn-lg" onclick="buscar()" style="width:100%;justify-content:center"><i class="fa-solid fa-magnifying-glass"></i> Buscar Imóveis</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header sec-header--center">
+      <span class="sec-label">Nosso Portfólio</span>
+      <h2 class="sec-title">Explore por Categoria</h2>
+      <p class="sec-sub">Encontre facilmente o tipo de imóvel que melhor atende às suas necessidades atuais e futuras.</p>
+      <div class="divider divider--center"></div>
+    </div>
+    
+    <div class="cat-grid">
+      <a href="vendas.html?tipo=casa" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800" alt="Casas">
+        <div class="cat-overlay"></div>
+        <div class="cat-body">
+          <div class="cat-label">Para comprar</div>
+          <h3 class="cat-name">Casas</h3>
+          <span class="cat-count"><i class="fa-solid fa-house"></i> 48 imóveis</span>
+        </div>
+      </a>
+      <a href="vendas.html?tipo=apartamento" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800" alt="Apartamentos">
+        <div class="cat-overlay"></div>
+        <div class="cat-body">
+          <div class="cat-label">Para comprar</div>
+          <h3 class="cat-name">Apartamentos</h3>
+          <span class="cat-count"><i class="fa-solid fa-building"></i> 32 imóveis</span>
+        </div>
+      </a>
+      <a href="vendas.html?tipo=terreno" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" alt="Terrenos">
+        <div class="cat-overlay"></div>
+        <div class="cat-body">
+          <div class="cat-label">Para comprar</div>
+          <h3 class="cat-name">Terrenos</h3>
+          <span class="cat-count"><i class="fa-solid fa-layer-group"></i> 21 imóveis</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUES VENDA -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-label">Oportunidades</span>
+      <h2 class="sec-title">Destaques para Venda</h2>
+      <div class="divider"></div>
+      <p class="sec-sub">Seleção exclusiva de imóveis com excelente custo-benefício e localização privilegiada em Taquara e arredores.</p>
+    </div>
+    
+    <div class="props-grid" id="vendas-grid">
+      <!-- Cards gerados via JS -->
+    </div>
+    
+    <div style="text-align:center;margin-top:48px">
+      <a href="vendas.html" class="btn btn-outline">Ver todos os imóveis à venda</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET (AVALIAÇÃO) -->
+<section class="container">
+  <div class="lead-magnet">
+    <div class="lm-content">
+      <h2>Descubra quanto vale o seu imóvel</h2>
+      <p>Receba uma avaliação mercadológica gratuita e sem compromisso feita pelos nossos corretores especialistas.</p>
+    </div>
+    <form class="lm-form" onsubmit="enviarAvaliacao(event)">
+      <div class="form-group" style="margin-bottom:12px">
+        <label style="font-size:0.75rem;color:var(--gray)">Endereço do Imóvel</label>
+        <input type="text" id="lm-end" placeholder="Rua, Número, Bairro" required>
+      </div>
+      <div class="form-group" style="margin-bottom:16px">
+        <label style="font-size:0.75rem;color:var(--gray)">Seu WhatsApp</label>
+        <input type="tel" id="lm-tel" placeholder="(51) 9xxxx-xxxx" required>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;padding:12px">Quero minha avaliação gratuita</button>
+    </form>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header sec-header--center">
+      <span class="sec-label">Especialidades</span>
+      <h2 class="sec-title">Nossos Serviços</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-house-chimney"></i></div>
+        <h3>Compra e Venda</h3>
+        <p>Assessoria completa na busca pelo imóvel ideal ou na venda da sua propriedade, garantindo o melhor negócio com segurança jurídica e agilidade.</p>
+        <a href="vendas.html" class="svc-link">Ver imóveis <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-key"></i></div>
+        <h3>Locação e Administração</h3>
+        <p>Amplo portfólio de imóveis residenciais e comerciais para alugar, com gestão profissional, garantias flexíveis e análise de crédito simplificada.</p>
+        <a href="locacao.html" class="svc-link">Ver opções <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-file-contract"></i></div>
+        <h3>Financiamento Habitacional</h3>
+        <p>Aprovamos seu crédito com agilidade. Somos parceiros das principais instituições financeiras para buscar as melhores taxas de juros do mercado para você.</p>
+        <a href="contato.html" class="svc-link">Falar com corretor <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <span class="sec-label">Tradição & Confiança</span>
+        <h2 class="sec-title">Mais de duas décadas realizando bons negócios</h2>
+        <div class="divider"></div>
+        <p>Administrada por Cristina Lahude Salim, a Facilita Imóveis possui sólida experiência no mercado imobiliário da região. Trabalhamos diariamente para entregar resultados e superar as expectativas de nossos clientes.</p>
+        <ul class="about-list">
+          <li><i class="fa-solid fa-check"></i> Profissionais registrados e credenciados (CRECI 26038J)</li>
+          <li><i class="fa-solid fa-check"></i> Assessoria jurídica e documental completa</li>
+          <li><i class="fa-solid fa-check"></i> Avaliação mercadológica precisa e gratuita</li>
+          <li><i class="fa-solid fa-check"></i> Atendimento personalizado focado nas suas necessidades</li>
+        </ul>
+        <a href="sobre.html" class="btn btn-primary">Conheça nossa história</a>
+      </div>
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000" alt="Escritório Facilita Imóveis">
+        <div class="about-badge">
+          <strong>20+</strong>
+          <span>Anos de mercado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR & CONTACT -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header sec-header--center">
+      <span class="sec-label">Planejamento</span>
+      <h2 class="sec-title">Simulador de Financiamento</h2>
+      <div class="divider divider--center"></div>
+      <p class="sec-sub">Descubra o valor estimado das parcelas do seu novo imóvel e dê o primeiro passo para a realização do seu sonho.</p>
+    </div>
+    
+    <div class="sim-wrap">
+      <div class="sim-form">
+        <div class="form-group">
+          <label>Valor do Imóvel (R$)</label>
+          <input type="text" id="sim-valor" placeholder="R$ 300.000,00">
+        </div>
+        <div class="form-group">
+          <label>Entrada (%)</label>
+          <input type="range" id="sim-entrada" min="10" max="80" value="20">
+          <div class="range-val" id="entrada-label">20%</div>
+        </div>
+        <div class="form-group">
+          <label>Prazo</label>
+          <select id="sim-prazo">
+            <option value="120">10 anos (120 meses)</option>
+            <option value="180">15 anos (180 meses)</option>
+            <option value="240" selected>20 anos (240 meses)</option>
+            <option value="360">30 anos (360 meses)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Taxa de Juros Anual (%)</label>
+          <input type="number" id="sim-taxa" value="9.5" step="0.1">
+        </div>
+      </div>
+      
+      <div class="sim-result">
+        <h3>Resultado Estimado</h3>
+        <div class="sim-row">
+          <span>Valor da Entrada</span>
+          <strong id="res-entrada">R$ 60.000,00</strong>
+        </div>
+        <div class="sim-row">
+          <span>Valor Financiado</span>
+          <strong id="res-financiado">R$ 240.000,00</strong>
+        </div>
+        <div class="sim-highlight">
+          <span>Primeira Parcela</span>
+          <strong id="res-parcela">R$ 2.450,00</strong>
+        </div>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:20px;line-height:1.4">
+          * Valores aproximados baseados no sistema SAC. A taxa efetiva e as condições dependem da aprovação de crédito junto à instituição financeira.
+        </p>
+        <a href="https://api.whatsapp.com/send/?phone=5198936637&text=Olá, fiz uma simulação no site e gostaria de uma análise de crédito." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:20px">
+          Solicitar Análise de Crédito
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+        </a>
+        <p class="footer-about">Uma imobiliária dedicada a encontrar o lar perfeito para você e sua família. Profissionalismo, ética e transparência em todas as negociações imobiliárias em Taquara e região.</p>
+        <div class="footer-social">
+          <a href="#" class="fsoc"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="sobre.html">Quem Somos</a></li>
+          <li><a href="vendas.html">Imóveis à Venda</a></li>
+          <li><a href="locacao.html">Para Alugar</a></li>
+          <li><a href="anuncie.html">Anuncie Conosco</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Busca Rápida</h4>
+        <ul>
+          <li><a href="vendas.html?tipo=casa">Casas</a></li>
+          <li><a href="vendas.html?tipo=apartamento">Apartamentos</a></li>
+          <li><a href="vendas.html?tipo=terreno">Terrenos</a></li>
+          <li><a href="locacao.html?tipo=sala">Salas Comerciais</a></li>
+          <li><a href="vendas.html?tipo=sitio">Sítios & Fazendas</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p><i class="fa-solid fa-location-dot" style="width:16px;color:var(--gold)"></i> Av. Júlio Castilhos, 2400<br>Centro, Taquara/RS</p>
+        <p style="margin-top:12px"><i class="fa-solid fa-phone" style="width:16px;color:var(--gold)"></i> (51) 3541-2780</p>
+        <p><i class="fa-brands fa-whatsapp" style="width:16px;color:var(--gold)"></i> (51) 98936-6637</p>
+        <p style="margin-top:12px"><i class="fa-regular fa-envelope" style="width:16px;color:var(--gold)"></i> atendimento@facilittaimoveis.com</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J. Todos os direitos reservados.</p>
+      <p>Desenvolvido com excelência.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://api.whatsapp.com/send/?phone=5198936637" class="wa-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="btt" id="backToTop" onclick="scrollToTop()">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

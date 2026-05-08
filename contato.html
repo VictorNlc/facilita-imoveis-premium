@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato - Facilita Imóveis Taquara/RS</title>
+<meta name="description" content="Fale com a Facilita Imóveis em Taquara/RS. Tire suas dúvidas sobre compra, venda e locação de imóveis.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar--scrolled" id="navbar" style="background:var(--dark);padding:14px 0">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locacao.html">Locação</a></li>
+      <li><a href="vendas.html">Vendas</a></li>
+      <li><a href="anuncie.html">Anuncie</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html" class="active">Contato</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://api.whatsapp.com/send/?phone=5198936637" class="btn btn-primary btn-sm" target="_blank">Atendimento</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="sec-label">Fale Conosco</span>
+    <h1>Atendimento Facilita</h1>
+    <p>Estamos prontos para ajudar você a realizar o melhor negócio.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="sec-label">Canais de Atendimento</span>
+        <h2 class="sec-title">Como prefere falar com a gente?</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray);margin-bottom:32px;line-height:1.7">Escolha o canal de sua preferência. Nossa equipe está à disposição em horário comercial (Segunda a Sexta, das 8h30 às 18h).</p>
+        
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <h4>WhatsApp / Plantão Vendas</h4>
+            <p>Atendimento rápido e personalizado</p>
+            <a href="https://api.whatsapp.com/send/?phone=5198936637" target="_blank">(51) 98936-6637</a>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h4>Telefone Fixo</h4>
+            <p>Recepção e Administrativo</p>
+            <a href="tel:5135412780">(51) 3541-2780</a>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
+          <div>
+            <h4>E-mail</h4>
+            <p>Dúvidas, envio de documentos e suporte</p>
+            <a href="mailto:atendimento@facilittaimoveis.com">atendimento@facilittaimoveis.com</a>
+          </div>
+        </div>
+        
+        <div class="info-card" style="border:none">
+          <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h4>Nosso Escritório</h4>
+            <p>Av. Júlio Castilhos, 2400 - Centro<br>Taquara/RS, 95600-000</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-box">
+        <h3>Envie sua Mensagem</h3>
+        <p class="sub">Preencha os campos abaixo e entraremos em contato rapidamente.</p>
+        
+        <form id="contactForm" onsubmit="enviarMensagem(event)">
+          <div class="form-group">
+            <label>Nome Completo *</label>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>WhatsApp / Telefone *</label>
+              <input type="tel" id="telefone" placeholder="(51) 9xxxx-xxxx" required>
+            </div>
+            <div class="form-group">
+              <label>Assunto</label>
+              <select id="interesse">
+                <option>Quero Comprar</option>
+                <option>Quero Alugar</option>
+                <option>Financiamento Habitacional</option>
+                <option>Outros Assuntos</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mensagem *</label>
+            <textarea id="mensagem" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px">
+            Enviar Mensagem <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+        <div id="form-success" class="form-success" style="display:none">
+          <i class="fa-solid fa-check-circle"></i> Mensagem enviada com sucesso!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP & FAQ -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="sec-header sec-header--center">
+      <span class="sec-label">Localização</span>
+      <h2 class="sec-title">Venha tomar um café conosco</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    
+    <div style="border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);height:400px;margin-bottom:80px">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3466.863198089454!2d-50.7818967!3d-29.6657969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9518df45731b53e7%3A0xe1f9ba8b83515431!2sAv.%20J%C3%BAlio%20de%20Castilhos%2C%202400%20-%20Centro%2C%20Taquara%20-%20RS%2C%2095600-000!5e0!3m2!1spt-BR!2sbr!4v1714589255269!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div class="sec-header sec-header--center">
+      <h2 class="sec-title">Perguntas Frequentes</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q">O que é necessário para alugar um imóvel? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a">
+          <p>Geralmente solicitamos documentos pessoais (RG, CPF), comprovante de renda atualizado (superior a 3x o valor do aluguel), comprovante de residência e escolha da modalidade de garantia (Fiador, Seguro Fiança ou Caução).</p>
+        </div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q">Vocês auxiliam no processo de financiamento? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a">
+          <p>Sim! Somos parceiros correspondentes das principais instituições financeiras. Cuidamos de todo o processo burocrático e buscamos as melhores taxas do mercado para o seu perfil, sem custo adicional pela assessoria.</p>
+        </div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q">A avaliação do meu imóvel tem algum custo? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a">
+          <p>Não. A avaliação mercadológica para clientes que desejam vender ou alugar o imóvel através da Facilita Imóveis é totalmente gratuita e realizada por corretores experientes na região.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="https://www.facilittaimoveis.com.br/assets/imagens/home/logo-topo.png" alt="Facilita Imóveis">
+        </a>
+        <p class="footer-about">Uma imobiliária dedicada a encontrar o lar perfeito para você e sua família. Profissionalismo, ética e transparência em todas as negociações imobiliárias em Taquara e região.</p>
+        <div class="footer-social">
+          <a href="#" class="fsoc"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="sobre.html">Quem Somos</a></li>
+          <li><a href="vendas.html">Imóveis à Venda</a></li>
+          <li><a href="locacao.html">Para Alugar</a></li>
+          <li><a href="anuncie.html">Anuncie Conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Busca Rápida</h4>
+        <ul>
+          <li><a href="vendas.html?tipo=casa">Casas</a></li>
+          <li><a href="vendas.html?tipo=apartamento">Apartamentos</a></li>
+          <li><a href="vendas.html?tipo=terreno">Terrenos</a></li>
+          <li><a href="locacao.html?tipo=sala">Salas Comerciais</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p><i class="fa-solid fa-location-dot" style="width:16px;color:var(--gold)"></i> Av. Júlio Castilhos, 2400<br>Centro, Taquara/RS</p>
+        <p style="margin-top:12px"><i class="fa-solid fa-phone" style="width:16px;color:var(--gold)"></i> (51) 3541-2780</p>
+        <p><i class="fa-brands fa-whatsapp" style="width:16px;color:var(--gold)"></i> (51) 98936-6637</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Facilita Imóveis. CRECI 26038J. Todos os direitos reservados.</p>
+      <p>Desenvolvido com excelência.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://api.whatsapp.com/send/?phone=5198936637" class="wa-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="btt" id="backToTop" onclick="scrollToTop()">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="app.js"></script>
+</body>
+</html>
