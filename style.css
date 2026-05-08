@@ -282,23 +282,36 @@ h1,h2,h3{line-height:1.2}
 @media(max-width:768px){
   .nav-links,.nav-actions .btn,.nav-phone{display:none}
   .hamburger{display:block}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--dark);padding:20px;gap:4px}
-  .hero h1{font-size:2.2rem}
-  .hero-stats{gap:20px}
-  .search-fields{grid-template-columns:1fr 1fr}
-  .search-fields .btn{grid-column:span 2}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--dark);padding:20px;gap:8px;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .navbar{padding:14px 0}
+  .hero h1{font-size:2rem}
+  .hero-stats{gap:20px;flex-wrap:wrap}
+  .search-fields{grid-template-columns:1fr}
+  .search-fields .btn{grid-column:1}
+  .stats-grid{grid-template-columns:1fr 1fr}
   .services-grid{grid-template-columns:1fr}
   .test-grid{grid-template-columns:1fr}
-  .sim-wrap{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
+  .sim-wrap{grid-template-columns:1fr;padding:24px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
   .about-img-wrap img{height:320px}
-  .footer-main{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .footer-main{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
   .props-grid{grid-template-columns:1fr}
   .cat-grid{grid-template-columns:1fr}
   .section{padding:56px 0}
+  .search-box{padding:20px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.8rem}
+  .hero-actions{flex-direction:column;width:100%}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-stats{flex-direction:column;gap:16px}
+  .filters-bar{flex-direction:column;gap:12px}
+  .filter-group{width:100%}
+  .sec-title{font-size:1.6rem}
+  .stats-grid{grid-template-columns:1fr}
+  .nav-logo img{height:40px}
 }
 
 /* =========================================
