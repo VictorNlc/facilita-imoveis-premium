@@ -68,7 +68,9 @@ h1,h2,h3{line-height:1.2}
 .navbar--top{background:transparent;padding:20px 0}
 .navbar--scrolled{background:var(--dark);padding:14px 0;box-shadow:0 2px 20px rgba(0,0,0,.3)}
 .nav-wrap{display:flex;align-items:center;gap:32px}
-.nav-logo img{height:48px;width:auto}
+.nav-logo{display:inline-flex;background:#fff;padding:8px 16px;border-radius:var(--r);box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:transform .3s}
+.nav-logo:hover{transform:translateY(-2px)}
+.nav-logo img{height:42px;width:auto;display:block}
 .nav-logo-fallback{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff}
 .nav-links{display:flex;margin-left:auto;gap:4px}
 .nav-links a{color:rgba(255,255,255,.8);font-size:.875rem;font-weight:500;padding:8px 14px;border-radius:var(--r);transition:all .2s}
@@ -220,7 +222,8 @@ h1,h2,h3{line-height:1.2}
 /* FOOTER */
 .footer{background:var(--dark2);color:rgba(255,255,255,.65)}
 .footer-main{padding:64px 0 40px;display:grid;grid-template-columns:2.5fr 1fr 1fr 1.5fr;gap:48px}
-.footer-logo img{height:44px;margin-bottom:16px}
+.footer-logo{display:inline-flex;background:#fff;padding:8px 16px;border-radius:var(--r);margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.footer-logo img{height:38px;margin-bottom:0;display:block}
 .footer-logo-text{font-family:'Playfair Display',serif;font-size:1.4rem;color:#fff;margin-bottom:16px}
 .footer-about{font-size:.85rem;line-height:1.75;margin-bottom:20px}
 .footer-social{display:flex;gap:8px}
