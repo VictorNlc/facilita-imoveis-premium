@@ -179,12 +179,9 @@ function filtrar(){
   if(mapInstance) {
     updateMapMarkers(filtered, 'venda');
   } else {
-    // Se não instanciado, armazena no array global pra quando abrir o mapa
-    // Mas pra facilitar, eu posso init o mapa em hidden state
-    setTimeout(()=>{
-      if(!mapInstance) initMap();
-      updateMapMarkers(filtered, 'venda');
-    }, 500);
+    // Apenas salva a referência para ser usada quando o mapa for ativado
+    window.currentFiltered = filtered;
+    window.currentMode = 'venda';
   }
 }
 

@@ -174,10 +174,9 @@ function filtrar(){
   if(mapInstance) {
     updateMapMarkers(filtered, 'aluguel');
   } else {
-    setTimeout(()=>{
-      if(!mapInstance) initMap();
-      updateMapMarkers(filtered, 'aluguel');
-    }, 500);
+    // Apenas salva a referência para ser usada quando o mapa for ativado
+    window.currentFiltered = filtered;
+    window.currentMode = 'aluguel';
   }
 }
 

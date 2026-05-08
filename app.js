@@ -179,9 +179,12 @@ function toggleView(viewType) {
     if(mapCont) {
       mapCont.style.display = 'block';
       if(mapInstance) {
-        mapInstance.invalidateSize(); // Fix leafet render issue when hidden
+        setTimeout(() => mapInstance.invalidateSize(), 100); // Fix leafet render issue when hidden on mobile
       } else {
         initMap();
+        if(window.currentFiltered) {
+          updateMapMarkers(window.currentFiltered, window.currentMode);
+        }
       }
     }
   }
