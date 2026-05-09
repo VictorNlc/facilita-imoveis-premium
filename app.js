@@ -178,14 +178,15 @@ function toggleView(viewType) {
     grid.style.display = 'none';
     if(mapCont) {
       mapCont.style.display = 'block';
-      if(mapInstance) {
-        setTimeout(() => mapInstance.invalidateSize(), 100); // Fix leafet render issue when hidden on mobile
-      } else {
+      if(!mapInstance) {
         initMap();
         if(window.currentFiltered) {
           updateMapMarkers(window.currentFiltered, window.currentMode);
         }
       }
+      setTimeout(() => {
+        if(mapInstance) mapInstance.invalidateSize();
+      }, 100);
     }
   }
 }
@@ -194,8 +195,9 @@ function initMap() {
   if(typeof L === 'undefined') return;
   // Centro de Taquara
   mapInstance = L.map('map-view').setView([-29.6500, -50.7800], 14);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap & CartoDB'
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mapInstance);
 }
 
