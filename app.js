@@ -24,6 +24,35 @@ function toggleMenu(){
 
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
 
+// ===== SCROLL REVEAL ANIMATIONS =====
+// Fails safe: if IntersectionObserver is unavailable, or anything goes wrong,
+// content must never stay permanently invisible (JS errors, no-JS crawlers, etc).
+function initReveal(){
+  const targets=document.querySelectorAll('.reveal, .reveal-stagger');
+  if(!targets.length) return;
+
+  if(typeof IntersectionObserver==='undefined'){
+    targets.forEach(el=>el.classList.add('visible'));
+    return;
+  }
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -10% 0px'});
+  targets.forEach(el=>obs.observe(el));
+
+  // Safety net: guarantee everything is visible shortly after load either way
+  setTimeout(()=>targets.forEach(el=>el.classList.add('visible')),2500);
+}
+initReveal();
+// Re-scan after dynamic content (property cards) is injected
+window.addEventListener('load',initReveal);
+
 // ===== SEARCH TABS =====
 let searchMode='comprar';
 function setTab(btn,mode){
