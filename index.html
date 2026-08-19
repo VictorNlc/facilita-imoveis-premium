@@ -6,6 +6,8 @@
 <title>Facilita Imóveis - Sua Imobiliária em Taquara/RS</title>
 <meta name="description" content="Facilita Imóveis - Compra, venda e locação de imóveis em Taquara/RS. CRECI 26038J. Mais de 20 anos de experiência.">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%231a5c35%27/%3E%3Cpath d=%27M50 18 L84 48 H72 V80 H56 V56 H44 V80 H28 V48 H16 Z%27 fill=%27%23c9a84c%27/%3E%3C/svg%3E">
+<noscript><style>.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -42,12 +44,14 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-tag"><i class="fa-solid fa-star"></i> Excelência Imobiliária</div>
+      <div class="hero-tag"><span class="dot"></span> Excelência Imobiliária</div>
       <h1>Encontre o imóvel <em>dos seus sonhos</em> conosco</h1>
       <p class="hero-desc">Com mais de 20 anos de tradição em Taquara e região, conectamos você às melhores oportunidades de compra, venda e locação do mercado.</p>
-      
+
       <div class="hero-actions">
         <a href="vendas.html" class="btn btn-primary btn-lg">Ver Imóveis à Venda</a>
         <a href="anuncie.html" class="btn btn-outline-white btn-lg">Anunciar Imóvel</a>
@@ -62,9 +66,14 @@
           <strong class="stat-num" data-target="1200">0</strong>
           <span>Imóveis Negociados</span>
         </div>
+        <div class="hero-stat">
+          <strong class="stat-num" data-target="98">0</strong>
+          <span>% Clientes Satisfeitos</span>
+        </div>
       </div>
     </div>
   </div>
+  <div class="hero-scroll"><span>Role para explorar</span><i class="fa-solid fa-chevron-down"></i></div>
 </section>
 
 <!-- SEARCH BOX -->
@@ -77,7 +86,7 @@
       </div>
       <div class="search-fields">
         <div class="sf-group">
-          <label>Tipo de Imóvel</label>
+          <label><i class="fa-solid fa-house"></i> Tipo de Imóvel</label>
           <select id="tipo-imovel">
             <option value="">Todos os tipos</option>
             <option>Casa</option>
@@ -90,7 +99,7 @@
           </select>
         </div>
         <div class="sf-group">
-          <label>Bairro / Região</label>
+          <label><i class="fa-solid fa-location-dot"></i> Bairro / Região</label>
           <select id="bairro">
             <option value="">Qualquer bairro</option>
             <option>Centro</option>
@@ -103,7 +112,7 @@
           </select>
         </div>
         <div class="sf-group">
-          <label>Faixa de Preço</label>
+          <label><i class="fa-solid fa-sack-dollar"></i> Faixa de Preço</label>
           <select id="preco">
             <option value="">Qualquer valor</option>
             <option value="200000">Até R$ 200.000</option>
@@ -116,23 +125,30 @@
         <button class="btn btn-gold btn-lg" onclick="buscar()" style="width:100%;justify-content:center"><i class="fa-solid fa-magnifying-glass"></i> Buscar Imóveis</button>
       </div>
     </div>
+
+    <div class="trust-row">
+      <span class="trust-badge"><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span> 4.9/5 no Google</span>
+      <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> CRECI 26038J</span>
+      <span class="trust-badge"><i class="fa-solid fa-award"></i> 20+ anos em Taquara/RS</span>
+    </div>
   </div>
 </section>
 
 <!-- CATEGORIAS -->
 <section class="section">
   <div class="container">
-    <div class="sec-header sec-header--center">
+    <div class="sec-header sec-header--center reveal">
       <span class="sec-label">Nosso Portfólio</span>
       <h2 class="sec-title">Explore por Categoria</h2>
       <p class="sec-sub">Encontre facilmente o tipo de imóvel que melhor atende às suas necessidades atuais e futuras.</p>
       <div class="divider divider--center"></div>
     </div>
-    
-    <div class="cat-grid">
+
+    <div class="cat-grid reveal-stagger">
       <a href="vendas.html?tipo=casa" class="cat-card">
         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800" alt="Casas">
         <div class="cat-overlay"></div>
+        <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="cat-body">
           <div class="cat-label">Para comprar</div>
           <h3 class="cat-name">Casas</h3>
@@ -142,6 +158,7 @@
       <a href="vendas.html?tipo=apartamento" class="cat-card">
         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800" alt="Apartamentos">
         <div class="cat-overlay"></div>
+        <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="cat-body">
           <div class="cat-label">Para comprar</div>
           <h3 class="cat-name">Apartamentos</h3>
@@ -151,6 +168,7 @@
       <a href="vendas.html?tipo=terreno" class="cat-card">
         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" alt="Terrenos">
         <div class="cat-overlay"></div>
+        <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="cat-body">
           <div class="cat-label">Para comprar</div>
           <h3 class="cat-name">Terrenos</h3>
@@ -164,17 +182,17 @@
 <!-- DESTAQUES VENDA -->
 <section class="section section--gray">
   <div class="container">
-    <div class="sec-header">
+    <div class="sec-header reveal">
       <span class="sec-label">Oportunidades</span>
       <h2 class="sec-title">Destaques para Venda</h2>
       <div class="divider"></div>
       <p class="sec-sub">Seleção exclusiva de imóveis com excelente custo-benefício e localização privilegiada em Taquara e arredores.</p>
     </div>
-    
-    <div class="props-grid" id="vendas-grid">
+
+    <div class="props-grid reveal-stagger" id="vendas-grid">
       <!-- Cards gerados via JS -->
     </div>
-    
+
     <div style="text-align:center;margin-top:48px">
       <a href="vendas.html" class="btn btn-outline">Ver todos os imóveis à venda</a>
     </div>
@@ -183,7 +201,7 @@
 
 <!-- LEAD MAGNET (AVALIAÇÃO) -->
 <section class="container">
-  <div class="lead-magnet">
+  <div class="lead-magnet reveal">
     <div class="lm-content">
       <h2>Descubra quanto vale o seu imóvel</h2>
       <p>Receba uma avaliação mercadológica gratuita e sem compromisso feita pelos nossos corretores especialistas.</p>
@@ -205,13 +223,13 @@
 <!-- SERVICES -->
 <section class="section">
   <div class="container">
-    <div class="sec-header sec-header--center">
+    <div class="sec-header sec-header--center reveal">
       <span class="sec-label">Especialidades</span>
       <h2 class="sec-title">Nossos Serviços</h2>
       <div class="divider divider--center"></div>
     </div>
-    
-    <div class="services-grid">
+
+    <div class="services-grid reveal-stagger">
       <div class="svc-card">
         <div class="svc-icon"><i class="fa-solid fa-house-chimney"></i></div>
         <h3>Compra e Venda</h3>
@@ -238,7 +256,7 @@
 <section class="section section--gray">
   <div class="container">
     <div class="about-grid">
-      <div class="about-content">
+      <div class="about-content reveal">
         <span class="sec-label">Tradição & Confiança</span>
         <h2 class="sec-title">Mais de duas décadas realizando bons negócios</h2>
         <div class="divider"></div>
@@ -251,7 +269,7 @@
         </ul>
         <a href="sobre.html" class="btn btn-primary">Conheça nossa história</a>
       </div>
-      <div class="about-img-wrap">
+      <div class="about-img-wrap reveal">
         <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000" alt="Escritório Facilita Imóveis">
         <div class="about-badge">
           <strong>20+</strong>
@@ -262,17 +280,68 @@
   </div>
 </section>
 
-<!-- SIMULATOR & CONTACT -->
+<!-- TESTIMONIALS -->
 <section class="section">
   <div class="container">
-    <div class="sec-header sec-header--center">
+    <div class="sec-header sec-header--center reveal">
+      <span class="sec-label">Depoimentos</span>
+      <h2 class="sec-title">Quem Confiou, Recomenda</h2>
+      <div class="divider divider--center"></div>
+      <p class="sec-sub">A satisfação de quem já realizou o sonho da casa própria com a Facilita Imóveis é o nosso maior orgulho.</p>
+    </div>
+
+    <div class="test-grid reveal-stagger">
+      <div class="test-card">
+        <div class="test-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"Comprei meu primeiro apartamento com a ajuda da equipe da Facilita. Foram atenciosos do início ao fim, explicaram cada etapa do financiamento e me deixaram super tranquila durante todo o processo."</blockquote>
+        <div class="test-author">
+          <div class="test-av">MC</div>
+          <div>
+            <strong>Marina Costa</strong>
+            <small>Comprou em Jardim do Prado</small>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"Anunciei minha casa e em menos de um mês já tinha proposta. A avaliação foi justa e a negociação extremamente transparente. Recomendo de olhos fechados."</blockquote>
+        <div class="test-author">
+          <div class="test-av">RA</div>
+          <div>
+            <strong>Roberto Almeida</strong>
+            <small>Vendeu em Santa Rosa</small>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"Alugamos uma sala comercial no Centro e a administração da Facilita facilitou muito nossa vida. Suporte rápido sempre que precisamos. Nota 10!"</blockquote>
+        <div class="test-author">
+          <div class="test-av">JP</div>
+          <div>
+            <strong>Juliana Pereira</strong>
+            <small>Locatária no Centro</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR & CONTACT -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="sec-header sec-header--center reveal">
       <span class="sec-label">Planejamento</span>
       <h2 class="sec-title">Simulador de Financiamento</h2>
       <div class="divider divider--center"></div>
       <p class="sec-sub">Descubra o valor estimado das parcelas do seu novo imóvel e dê o primeiro passo para a realização do seu sonho.</p>
     </div>
-    
-    <div class="sim-wrap">
+
+    <div class="sim-wrap reveal">
       <div class="sim-form">
         <div class="form-group">
           <label>Valor do Imóvel (R$)</label>
@@ -299,7 +368,7 @@
       </div>
       
       <div class="sim-result">
-        <h3>Resultado Estimado</h3>
+        <h3><i class="fa-solid fa-calculator"></i> Resultado Estimado</h3>
         <div class="sim-row">
           <span>Valor da Entrada</span>
           <strong id="res-entrada">R$ 60.000,00</strong>
